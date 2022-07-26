@@ -1,0 +1,4 @@
+dotnet publish LinkVault
+
+cdk deploy --all
+cdk destroy --all

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "default": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DeploymentSettings:ServiceName": "dynamo-table",
+        "DeploymentSettings:TableName": "dev-table"
+      }
+    }
+  }
+}
