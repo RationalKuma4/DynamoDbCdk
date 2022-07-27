@@ -28,5 +28,5 @@ jobs:
         aws-region: ${{ secrets.REGION }}
     - name: install cdk and deploy
       run: |
-        npm install -g aws-cdk@latest
+        npm install --location=global aws-cdk@latest
         cdk deploy --all --require-approval never
