@@ -1,0 +1,32 @@
+name: cdk-deployment
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: infra-building
+      run: |
+        dotnet restore
+        dotnet build --no-restore
+        dotnet publish -c Release
+    - name: Configure aws credentials
+      uses: aws-actions/configure-aws-credentials@master
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        aws-region: ${{ secrets.REGION }}
+    - name: install cdk and deploy
+      run: |
+        npm install -g aws-cdk@latest
+        cdk deploy --all --require-approval never
