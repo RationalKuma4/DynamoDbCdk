@@ -30,7 +30,7 @@ internal static class Program
             Tags = serviceTags,
             Env = env
         });
-
+        //trigger
         app.Synth();
     }
 
