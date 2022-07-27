@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: infra-building
+    - name: Infra-building
       run: |
         dotnet restore
         dotnet build --no-restore
@@ -26,7 +26,7 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
         aws-region: ${{ secrets.REGION }}
-    - name: install cdk and deploy
+    - name: Install cdk and deploy
       run: |
         npm install --location=global aws-cdk@latest
         cdk deploy --all --require-approval never
