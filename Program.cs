@@ -11,7 +11,7 @@ internal static class Program
     private static string? _serviceName;
     private static string? _tableName;
 
-    private static async Task Main(string[] args)
+    private static void Main(string[] args)
     {
         _ = CreateHostBuilder(args).Build();
         var baseName = $"{_serviceName}-";
